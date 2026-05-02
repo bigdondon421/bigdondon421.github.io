@@ -1,0 +1,65 @@
+name: Notify Telegram
+
+on:
+  workflow_run:
+    workflows: [Deploy GitHub Pages]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send changed HTML links
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${TELEGRAM_BOT_TOKEN}" || -z "${TELEGRAM_CHAT_ID}" ]]; then
+            echo "Telegram secrets are not configured; skipping notification."
+            exit 0
+          fi
+
+          mapfile -t files < <(
+            curl -fsSL \
+              -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${REPOSITORY}/commits/${HEAD_SHA}" \
+              | jq -r '.files[]?.filename | select(test("\\.html$"))'
+          )
+
+          if [[ ${#files[@]} -eq 0 ]]; then
+            echo "No changed HTML files; skipping notification."
+            exit 0
+          fi
+
+          message="OPENCLAW HTML 已公開："
+          for file in "${files[@]}"; do
+            if [[ "${file}" == "index.html" ]]; then
+              url="https://bigdondon421.github.io/"
+            else
+              encoded=$(python3 - "$file" <<'PY'
+import sys
+from urllib.parse import quote
+print(quote(sys.argv[1], safe='/'))
+PY
+)
+              url="https://bigdondon421.github.io/${encoded}"
+            fi
+            message+=$'\n'"${url}"
+          done
+
+          curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${message}" \
+            --data-urlencode "disable_web_page_preview=true" \
+            > /dev/null
