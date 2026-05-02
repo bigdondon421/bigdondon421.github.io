@@ -23,8 +23,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -34,59 +32,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Collect changed HTML URLs
-        id: html_urls
-        if: ${{ github.event_name == 'push' }}
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          if [[ "${{ github.event.before }}" =~ ^0+$ ]]; then
-            mapfile -t files < <(git ls-tree -r --name-only HEAD | grep -E '\.html$' || true)
-          else
-            mapfile -t files < <(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" | grep -E '\.html$' || true)
-          fi
-
-          if [[ ${#files[@]} -eq 0 ]]; then
-            echo "has_html=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          {
-            echo "has_html=true"
-            echo "message<<EOF"
-            echo "OPENCLAW HTML 已公開："
-            for file in "${files[@]}"; do
-              if [[ "$file" == "index.html" ]]; then
-                echo "https://bigdondon421.github.io/"
-              else
-                encoded=$(python3 - <<'PY' "$file"
-import sys
-from urllib.parse import quote
-print(quote(sys.argv[1], safe='/'))
-PY
-)
-                echo "https://bigdondon421.github.io/${encoded}"
-              fi
-            done
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
-      - name: Send Telegram notification
-        if: ${{ steps.html_urls.outputs.has_html == 'true' }}
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TELEGRAM_MESSAGE: ${{ steps.html_urls.outputs.message }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [[ -z "${TELEGRAM_BOT_TOKEN}" || -z "${TELEGRAM_CHAT_ID}" ]]; then
-            echo "Telegram secrets are not configured; skipping notification."
-            exit 0
-          fi
-
-          curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
-            --data-urlencode "text=${TELEGRAM_MESSAGE}" \
-            --data-urlencode "disable_web_page_preview=true" \
-            > /dev/null
