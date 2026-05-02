@@ -29,7 +29,10 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [[ -z "${TELEGRAM_BOT_TOKEN}" || -z "${TELEGRAM_CHAT_ID}" ]]; then
+          telegram_bot_token=$(printf '%s' "${TELEGRAM_BOT_TOKEN}" | tr -d '[:space:]')
+          telegram_chat_id=$(printf '%s' "${TELEGRAM_CHAT_ID}" | tr -d '[:space:]')
+
+          if [[ -z "${telegram_bot_token}" || -z "${telegram_chat_id}" ]]; then
             echo "Telegram secrets are not configured; skipping notification."
             exit 0
           fi
@@ -66,8 +69,8 @@ jobs:
             message+=$'\n'"${url}"
           done
 
-          curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+          curl -sS -X POST "https://api.telegram.org/bot${telegram_bot_token}/sendMessage" \
+            --data-urlencode "chat_id=${telegram_chat_id}" \
             --data-urlencode "text=${message}" \
             --data-urlencode "disable_web_page_preview=true" \
             > /dev/null
