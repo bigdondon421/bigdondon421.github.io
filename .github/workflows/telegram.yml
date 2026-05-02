@@ -1,26 +1,28 @@
 name: Notify Telegram
 
 on:
-  workflow_run:
-    workflows:
-      - "Deploy GitHub Pages"
-    types:
-      - completed
+  push:
+    branches: [main]
+    paths:
+      - "**.html"
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   notify:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for Pages propagation
+        run: sleep 45
       - name: Send changed HTML links
         env:
           GITHUB_TOKEN: ${{ github.token }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          HEAD_SHA: ${{ github.sha }}
           REPOSITORY: ${{ github.repository }}
         shell: bash
         run: |
@@ -31,12 +33,20 @@ jobs:
             exit 0
           fi
 
+          if [[ "${BEFORE_SHA}" =~ ^0+$ ]]; then
+            api_url="https://api.github.com/repos/${REPOSITORY}/commits/${HEAD_SHA}"
+            jq_filter='.files[]?.filename | select(test("\\.html$"))'
+          else
+            api_url="https://api.github.com/repos/${REPOSITORY}/compare/${BEFORE_SHA}...${HEAD_SHA}"
+            jq_filter='.files[]?.filename | select(test("\\.html$"))'
+          fi
+
           mapfile -t files < <(
             curl -fsSL \
               -H "Authorization: Bearer ${GITHUB_TOKEN}" \
               -H "Accept: application/vnd.github+json" \
-              "https://api.github.com/repos/${REPOSITORY}/commits/${HEAD_SHA}" \
-              | jq -r '.files[]?.filename | select(test("\\.html$"))'
+              "${api_url}" \
+              | jq -r "${jq_filter}"
           )
 
           if [[ ${#files[@]} -eq 0 ]]; then
