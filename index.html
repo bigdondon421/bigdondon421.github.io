@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OPENCLAW HTML Hub</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f7f4;
+      --text: #1f2933;
+      --muted: #607080;
+      --line: #d8ddd8;
+      --accent: #0f766e;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111827;
+        --text: #eef2f7;
+        --muted: #aab6c3;
+        --line: #2c3847;
+        --accent: #5eead4;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 32px;
+    }
+    main {
+      width: min(720px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      background: color-mix(in srgb, var(--bg) 84%, white 16%);
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 5vw, 48px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    p { line-height: 1.7; color: var(--muted); }
+    a { color: var(--accent); font-weight: 700; }
+    code {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 2px 6px;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>OPENCLAW HTML Hub</h1>
+    <p>這個 GitHub Pages 網站已準備好公開 OPENCLAW 之後產出的 HTML。</p>
+    <p>把新的 HTML 檔提交到這個 repo 的 <code>main</code> 分支後，就會透過 <a href="https://bigdondon421.github.io/">bigdondon421.github.io</a> 對外公開。</p>
+  </main>
+</body>
+</html>
