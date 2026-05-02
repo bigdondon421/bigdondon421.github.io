@@ -63,7 +63,7 @@ jobs:
                 encoded=$(python3 - <<'PY' "$file"
 import sys
 from urllib.parse import quote
-print(quote(sys.argv[1]))
+print(quote(sys.argv[1], safe='/'))
 PY
 )
                 echo "https://bigdondon421.github.io/${encoded}"
@@ -72,7 +72,7 @@ PY
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
       - name: Send Telegram notification
-        if: ${{ steps.html_urls.outputs.has_html == 'true' && secrets.TELEGRAM_BOT_TOKEN != '' && secrets.TELEGRAM_CHAT_ID != '' }}
+        if: ${{ steps.html_urls.outputs.has_html == 'true' }}
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -80,6 +80,11 @@ PY
         shell: bash
         run: |
           set -euo pipefail
+          if [[ -z "${TELEGRAM_BOT_TOKEN}" || -z "${TELEGRAM_CHAT_ID}" ]]; then
+            echo "Telegram secrets are not configured; skipping notification."
+            exit 0
+          fi
+
           curl -sS -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
             --data-urlencode "text=${TELEGRAM_MESSAGE}" \
