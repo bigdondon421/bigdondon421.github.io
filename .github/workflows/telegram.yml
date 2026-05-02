@@ -59,12 +59,7 @@ jobs:
             if [[ "${file}" == "index.html" ]]; then
               url="https://bigdondon421.github.io/"
             else
-              encoded=$(python3 - "$file" <<'PY'
-import sys
-from urllib.parse import quote
-print(quote(sys.argv[1], safe='/'))
-PY
-)
+              encoded=$(python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe="/"))' "$file")
               url="https://bigdondon421.github.io/${encoded}"
             fi
             message+=$'\n'"${url}"
