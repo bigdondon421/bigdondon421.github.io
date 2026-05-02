@@ -2,8 +2,10 @@ name: Notify Telegram
 
 on:
   workflow_run:
-    workflows: [Deploy GitHub Pages]
-    types: [completed]
+    workflows:
+      - "Deploy GitHub Pages"
+    types:
+      - completed
 
 permissions:
   contents: read
