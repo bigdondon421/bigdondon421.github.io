@@ -12,9 +12,9 @@
     --panel-border: rgba(194, 166, 137, 0.42);
     --ink: #4c311f;
     --muted: #7b5a43;
-    --accent: #7eb6d9;
-    --accent-deep: #4f8fbe;
-    --accent-soft: #dceef8;
+    --accent: #c9ad8a;
+    --accent-deep: #9f7a55;
+    --accent-soft: #efe3d3;
     --coffee: #b88b63;
     --coffee-deep: #8f6747;
     --risk: #d18f3f;
@@ -145,20 +145,20 @@
   .macro-wrap {
     margin-top: 28px;
     border-radius: 28px;
-    background: linear-gradient(180deg, rgba(236,246,252,.82) 0%, rgba(223,239,248,.84) 100%);
-    border: 1px solid rgba(126,182,217,.42);
+    background: linear-gradient(180deg, rgba(245,238,228,.86) 0%, rgba(236,225,209,.88) 100%);
+    border: 1px solid rgba(159,122,85,.24);
     padding: 24px;
   }
   .macro-title {
     font-size: 30px;
     font-weight: 900;
-    color: #355f7a;
+    color: #6c4c34;
     margin-bottom: 14px;
     letter-spacing: .5px;
   }
   .macro-layout {
     display: grid;
-    grid-template-columns: 1.45fr .7fr;
+    grid-template-columns: .72fr 1.48fr;
     gap: 20px;
     align-items: start;
   }
@@ -167,34 +167,35 @@
     min-height: 560px;
     border-radius: 26px;
     overflow: hidden;
-    background: rgba(255,255,255,.36);
-    border: 1px solid rgba(126,182,217,.34);
+    background: rgba(255,255,255,.30);
+    border: 1px solid rgba(159,122,85,.22);
     padding: 18px;
   }
   .map-bg {
     position: absolute;
     inset: 18px 18px 18px 18px;
     background: url("https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg") center center / contain no-repeat;
-    opacity: .23;
-    filter: hue-rotate(165deg) saturate(1.2);
+    opacity: .20;
+    filter: sepia(1) hue-rotate(330deg) saturate(.7) brightness(.9);
   }
   .risk-circle {
     position: absolute;
-    left: 24px;
-    bottom: 24px;
-    width: 160px;
-    height: 160px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 210px;
+    height: 210px;
     border-radius: 50%;
-    border: 10px solid var(--accent-deep);
+    border: 12px solid var(--accent-deep);
     background: rgba(255,255,255,.62);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: #2f6183;
-    box-shadow: 0 10px 24px rgba(79,143,190,.16);
+    color: #6c4c34;
+    box-shadow: 0 10px 24px rgba(159,122,85,.14);
   }
-  .risk-circle .num { font-size: 44px; font-weight: 900; line-height: 1; }
+  .risk-circle .num { font-size: 56px; font-weight: 900; line-height: 1; }
   .risk-circle .lab { font-size: 16px; margin-top: 8px; font-weight: 800; letter-spacing: .5px; }
   .pin {
     position: absolute;
@@ -202,31 +203,23 @@
     align-items: flex-start;
     gap: 8px;
   }
-  .pin-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--accent-deep);
-    margin-top: 12px;
-    box-shadow: 0 0 0 6px rgba(79,143,190,.12);
-    flex: 0 0 auto;
-  }
+  .pin-dot { display: none; }
   .pin-card {
-    width: 240px;
+    width: 250px;
     padding: 14px 16px;
     border-radius: 18px;
-    background: rgba(79,143,190,.94);
+    background: rgba(159,122,85,.92);
     color: #fff;
-    box-shadow: 0 10px 22px rgba(62,120,160,.18);
+    box-shadow: 0 10px 22px rgba(120,88,58,.16);
   }
   .pin-card .n { font-size: 38px; font-weight: 900; line-height: 1; }
   .pin-card .t { margin-top: 6px; font-size: 18px; font-weight: 900; line-height: 1.35; }
   .pin-card .d { margin-top: 8px; font-size: 14px; line-height: 1.5; opacity: .96; }
-  .p1 { top: 48px; right: 76px; }
-  .p2 { top: 174px; right: 138px; }
-  .p3 { top: 320px; right: 252px; }
-  .p4 { top: 78px; left: 26px; }
-  .p5 { top: 250px; left: 86px; }
+  .p1 { top: 62px; right: 78px; }
+  .p2 { top: 214px; right: 128px; }
+  .p3 { top: 358px; right: 238px; }
+  .p4 { top: 82px; left: 30px; }
+  .p5 { top: 286px; left: 84px; }
   .macro-list {
     display: grid;
     gap: 14px;
@@ -238,8 +231,8 @@
     align-items: start;
     padding: 14px 14px;
     border-radius: 18px;
-    background: rgba(255,255,255,.38);
-    border: 1px solid rgba(126,182,217,.32);
+    background: rgba(255,255,255,.34);
+    border: 1px solid rgba(159,122,85,.22);
   }
   .macro-item .idx {
     font-size: 44px;
@@ -250,14 +243,14 @@
   .macro-item .txt b {
     display: block;
     font-size: 18px;
-    color: #355f7a;
+    color: #7a573a;
     margin-bottom: 6px;
   }
   .macro-item .txt span {
     display: block;
     font-size: 15px;
     line-height: 1.55;
-    color: #46687f;
+    color: #6c5646;
     font-weight: 700;
   }
   .lower {
@@ -359,6 +352,14 @@
       <div class="macro-wrap content">
         <div class="macro-title">GLOBAL MACRO DASHBOARD</div>
         <div class="macro-layout">
+          <div class="macro-list">
+            <div class="macro-item"><div class="idx">01</div><div class="txt"><b>主線還在</b><span>AI / 半導體仍是全球資金主戰場，成長權值還沒有失去市場信任。</span></div></div>
+            <div class="macro-item"><div class="idx">02</div><div class="txt"><b>位階已高</b><span>現在不是低位撿便宜，而是高位驗證主線續航力的階段。</span></div></div>
+            <div class="macro-item"><div class="idx">03</div><div class="txt"><b>總經壓力未消失</b><span>消費壓力與通膨敘事若再升溫，市場會先壓縮成長股評價。</span></div></div>
+            <div class="macro-item"><div class="idx">04</div><div class="txt"><b>不要被 headline 騙</b><span>看到政治或法律表述改善時，仍要用油價、VIX、美元與資金反應交叉驗證。</span></div></div>
+            <div class="macro-item"><div class="idx">05</div><div class="txt"><b>策略是不追高、不空主線</b><span>續抱、等回檔、挑價值區與主線同時成立的標的，不追最熱的情緒股。</span></div></div>
+          </div>
+
           <div class="map-box">
             <div class="map-bg"></div>
             <div class="risk-circle">
@@ -367,7 +368,6 @@
             </div>
 
             <div class="pin p1">
-              <div class="pin-dot"></div>
               <div class="pin-card">
                 <div class="n">01</div>
                 <div class="t">AI / 半導體主線仍是全球資金核心</div>
@@ -376,7 +376,6 @@
             </div>
 
             <div class="pin p2">
-              <div class="pin-dot"></div>
               <div class="pin-card">
                 <div class="n">02</div>
                 <div class="t">市場進入高位驗證區</div>
@@ -385,7 +384,6 @@
             </div>
 
             <div class="pin p3">
-              <div class="pin-dot"></div>
               <div class="pin-card">
                 <div class="n">03</div>
                 <div class="t">消費壓力正在慢慢浮現</div>
@@ -394,7 +392,6 @@
             </div>
 
             <div class="pin p4">
-              <div class="pin-dot"></div>
               <div class="pin-card">
                 <div class="n">04</div>
                 <div class="t">Headline 改善不等於風險解除</div>
@@ -403,21 +400,12 @@
             </div>
 
             <div class="pin p5">
-              <div class="pin-dot"></div>
               <div class="pin-card">
                 <div class="n">05</div>
                 <div class="t">操作上續抱主線，但不追情緒高點</div>
                 <div class="d">風控 63.6% 仍支持分批布局，但節奏比 4 月初更保守，重視效率與位置。</div>
               </div>
             </div>
-          </div>
-
-          <div class="macro-list">
-            <div class="macro-item"><div class="idx">01</div><div class="txt"><b>主線還在</b><span>AI / 半導體仍是全球資金主戰場，成長權值還沒有失去市場信任。</span></div></div>
-            <div class="macro-item"><div class="idx">02</div><div class="txt"><b>位階已高</b><span>現在不是低位撿便宜，而是高位驗證主線續航力的階段。</span></div></div>
-            <div class="macro-item"><div class="idx">03</div><div class="txt"><b>總經壓力未消失</b><span>消費壓力與通膨敘事若再升溫，市場會先壓縮成長股評價。</span></div></div>
-            <div class="macro-item"><div class="idx">04</div><div class="txt"><b>不要被 headline 騙</b><span>看到政治或法律表述改善時，仍要用油價、VIX、美元與資金反應交叉驗證。</span></div></div>
-            <div class="macro-item"><div class="idx">05</div><div class="txt"><b>策略是不追高、不空主線</b><span>續抱、等回檔、挑價值區與主線同時成立的標的，不追最熱的情緒股。</span></div></div>
           </div>
         </div>
       </div>
