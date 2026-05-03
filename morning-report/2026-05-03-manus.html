@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARK 總經晨報 2026-05-03</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --coffee-dark: #2c1810;
+      --coffee-medium: #5d4037;
+      --coffee-light: #8d6e63;
+      --cream: #f5f1e8;
+      --warm-gold: #d4a574;
+      --accent-warm: #e8b4a8;
+      --text-dark: #3e2723;
+      --text-light: #6d4c41;
+      --border-subtle: #d7ccc8;
+      --success-warm: #a1887f;
+      --warning-warm: #c9a876;
+      --risk-warm: #b8866b;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', 'Microsoft YaHei', sans-serif;
+      background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    body {
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(45, 24, 16, 0.08);
+      overflow: hidden;
+    }
+
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, #2c1810 0%, #5d4037 100%);
+      padding: 40px 30px;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '☕';
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 48px;
+      opacity: 0.15;
+    }
+
+    .header-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .header-subtitle {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .header-date {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      letter-spacing: 1px;
+    }
+
+    /* Main Theme */
+    .main-theme {
+      background: linear-gradient(to right, #faf8f3, #f5f1e8);
+      padding: 30px;
+      border-bottom: 2px solid var(--border-subtle);
+      border-left: 5px solid var(--warm-gold);
+    }
+
+    .main-theme-label {
+      font-size: 0.8rem;
+      color: var(--coffee-light);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .main-theme-text {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* Key Indicators Section */
+    .indicators-section {
+      padding: 30px;
+      background: white;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      color: var(--coffee-dark);
+      margin-bottom: 24px;
+      font-weight: 700;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--warm-gold);
+      display: inline-block;
+    }
+
+    .indicators-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .indicator-card {
+      background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
+      padding: 24px;
+      border-radius: 8px;
+      border-left: 4px solid var(--warm-gold);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .indicator-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(45, 24, 16, 0.1);
+    }
+
+    .indicator-label {
+      font-size: 0.8rem;
+      color: var(--coffee-light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .indicator-value {
+      font-size: 1.8rem;
+      color: var(--coffee-dark);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .indicator-desc {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* Global Macro Section */
+    .global-macro {
+      padding: 30px;
+      background: linear-gradient(to bottom, #faf8f3, white);
+      border-top: 2px solid var(--border-subtle);
+    }
+
+    .macro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .macro-card {
+      background: white;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .macro-card-title {
+      font-size: 0.95rem;
+      color: var(--coffee-light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .macro-card-value {
+      font-size: 2rem;
+      color: var(--coffee-dark);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .macro-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .world-map-visual {
+      background: linear-gradient(135deg, #e8dcc8 0%, #d4c4b0 100%);
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .world-map-visual::before {
+      content: '🌍';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 120px;
+      opacity: 0.1;
+    }
+
+    .world-map-title {
+      font-size: 1.1rem;
+      color: var(--coffee-dark);
+      margin-bottom: 16px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .world-map-desc {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Portfolio Pie Chart */
+    .portfolio-section {
+      padding: 30px;
+      background: white;
+      border-top: 2px solid var(--border-subtle);
+    }
+
+    .pie-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .pie-chart-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .pie-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    .legend-color {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .legend-text {
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .legend-percent {
+      color: var(--coffee-light);
+      font-weight: 700;
+      margin-left: auto;
+    }
+
+    /* Content Sections */
+    .content-section {
+      padding: 30px;
+      border-top: 2px solid var(--border-subtle);
+    }
+
+    .content-section:nth-child(odd) {
+      background: linear-gradient(to bottom, #faf8f3, white);
+    }
+
+    .content-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .content-item {
+      padding: 16px;
+      background: white;
+      border-left: 4px solid var(--warm-gold);
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-dark);
+    }
+
+    .content-item strong {
+      color: var(--coffee-dark);
+      font-weight: 600;
+    }
+
+    /* Risk Section */
+    .risk-section {
+      padding: 30px;
+      background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
+      border-top: 2px solid var(--border-subtle);
+      border-left: 5px solid var(--risk-warm);
+    }
+
+    .risk-item {
+      padding: 14px;
+      margin-bottom: 12px;
+      background: white;
+      border-radius: 4px;
+      border-left: 4px solid var(--risk-warm);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-dark);
+    }
+
+    /* Operation Advice */
+    .operation-section {
+      padding: 30px;
+      background: white;
+      border-top: 2px solid var(--border-subtle);
+    }
+
+    .advice-item {
+      padding: 16px;
+      margin-bottom: 12px;
+      background: linear-gradient(to right, #faf8f3, white);
+      border-radius: 4px;
+      border-left: 4px solid var(--success-warm);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-dark);
+    }
+
+    /* Extension Module */
+    .extension-section {
+      padding: 30px;
+      background: linear-gradient(to bottom, #faf8f3, white);
+      border-top: 2px solid var(--border-subtle);
+    }
+
+    .extension-subsection {
+      margin-bottom: 24px;
+    }
+
+    .extension-title {
+      font-size: 0.95rem;
+      color: var(--coffee-light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .extension-content {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding: 12px;
+      background: white;
+      border-radius: 4px;
+      border-left: 4px solid var(--warm-gold);
+    }
+
+    /* Conclusion */
+    .conclusion-section {
+      padding: 30px;
+      background: linear-gradient(135deg, #2c1810 0%, #5d4037 100%);
+      color: var(--cream);
+      border-top: 2px solid var(--coffee-light);
+    }
+
+    .conclusion-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      opacity: 0.9;
+      font-weight: 600;
+    }
+
+    .conclusion-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 20px 30px;
+      background: #faf8f3;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 1.8rem;
+      }
+
+      .header {
+        padding: 30px 20px;
+      }
+
+      .indicators-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .macro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pie-container {
+        grid-template-columns: 1fr;
+      }
+
+      .main-theme-text {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.1rem;
+      }
+
+      body {
+        padding: 12px;
+      }
+
+      .header::before {
+        font-size: 36px;
+        top: 15px;
+        right: 20px;
+      }
+
+      .world-map-visual::before {
+        font-size: 80px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-title {
+        font-size: 1.4rem;
+      }
+
+      .indicator-value {
+        font-size: 1.4rem;
+      }
+
+      .macro-card-value {
+        font-size: 1.5rem;
+      }
+
+      .conclusion-text {
+        font-size: 0.95rem;
+      }
+
+      .pie-legend {
+        gap: 10px;
+      }
+
+      .legend-item {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-title">ARK 總經晨報</div>
+      <div class="header-subtitle">Global Macro Morning Briefing</div>
+      <div class="header-date">2026 年 5 月 3 日 | May 3, 2026</div>
+    </div>
+
+    <!-- Main Theme -->
+    <div class="main-theme">
+      <div class="main-theme-label">今日主線</div>
+      <div class="main-theme-text">
+        昨晚美股延續 AI 與半導體主線強勢，市場仍願意把資金放在成長權值，但這已經不是低位撿便宜，而是高位驗證區。今天的核心不是猜會不會立刻轉空，而是確認主線承接力還在不在，以及消費壓力與波動是否開始反咬估值。
+      </div>
+    </div>
+
+    <!-- Key Indicators -->
+    <div class="indicators-section">
+      <div class="section-title">核心指標</div>
+      <div class="indicators-grid">
+        <div class="indicator-card">
+          <div class="indicator-label">一句話主線</div>
+          <div class="indicator-value">AI 主線續強</div>
+          <div class="indicator-desc">科技與半導體仍是資金主戰場，但位階已高。</div>
+        </div>
+        <div class="indicator-card">
+          <div class="indicator-label">系統性風險</div>
+          <div class="indicator-value">中</div>
+          <div class="indicator-desc">不是恐慌盤，但也不是可以閉眼追價的舒服區。</div>
+        </div>
+        <div class="indicator-card">
+          <div class="indicator-label">今日風控</div>
+          <div class="indicator-value">63.6%</div>
+          <div class="indicator-desc">仍在可布局區，偏向續抱主線、分批佈局。</div>
+        </div>
+        <div class="indicator-card">
+          <div class="indicator-label">操作態度</div>
+          <div class="indicator-value">守節奏</div>
+          <div class="indicator-desc">不追高，不空主線，選結構，等回檔。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Macro Dashboard -->
+    <div class="global-macro">
+      <div class="section-title">全球總經視角</div>
+      
+      <div class="world-map-visual">
+        <div class="world-map-title">Global Macro Dashboard</div>
+        <div class="world-map-desc">
+          美股結構維持 Nasdaq / 半導體偏強，道瓊相對弱，說明資金還是集中在 AI、半導體與大型科技權值。風控數值 63.6%，代表系統沒有切到防守模式，主邏輯仍是可布局，但布局節奏要比 4 月初更保守一點。
+        </div>
+      </div>
+
+      <div class="macro-grid">
+        <div class="macro-card">
+          <div class="macro-card-title">市場結構</div>
+          <div class="macro-card-value">Nasdaq 強</div>
+          <div class="macro-card-desc">AI 與半導體資金集中，科技權值領漲</div>
+        </div>
+        <div class="macro-card">
+          <div class="macro-card-title">需求端信號</div>
+          <div class="macro-card-value">承壓</div>
+          <div class="macro-card-desc">儲蓄率偏低、消費信心下滑</div>
+        </div>
+        <div class="macro-card">
+          <div class="macro-card-title">政策影響</div>
+          <div class="macro-card-value">中性觀察</div>
+          <div class="macro-card-desc">Headline 不等於風險解除，需交叉驗證</div>
+        </div>
+        <div class="macro-card">
+          <div class="macro-card-title">監控指標</div>
+          <div class="macro-card-value">油價 / VIX / 美元</div>
+          <div class="macro-card-desc">若同步升高需調整節奏</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Structure -->
+    <div class="portfolio-section">
+      <div class="section-title">投資組合結構</div>
+      
+      <div class="pie-container">
+        <div class="pie-chart-wrapper">
+          <svg viewBox="0 0 200 200" style="width: 280px; height: 280px;">
+            <!-- 半導體 / AI 核心: 34% (122.4°) -->
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#a1887f" stroke-width="45" 
+                    stroke-dasharray="193.2 565.2" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+            
+            <!-- 大型科技平台: 24% (86.4°) -->
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#c9a876" stroke-width="45" 
+                    stroke-dasharray="136.8 565.2" stroke-dashoffset="-193.2" transform="rotate(-90 100 100)"/>
+            
+            <!-- 航太 / 衛星: 18% (64.8°) -->
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#d4a574" stroke-width="45" 
+                    stroke-dasharray="102.6 565.2" stroke-dashoffset="-330" transform="rotate(-90 100 100)"/>
+            
+            <!-- 設備 / 光通訊: 14% (50.4°) -->
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#e8b4a8" stroke-width="45" 
+                    stroke-dasharray="79.8 565.2" stroke-dashoffset="-432.6" transform="rotate(-90 100 100)"/>
+            
+            <!-- 現金 / 其他: 10% (36°) -->
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#f5f1e8" stroke-width="45" 
+                    stroke-dasharray="57 565.2" stroke-dashoffset="-512.4" transform="rotate(-90 100 100)"/>
+            
+            <!-- Center circle for donut effect -->
+            <circle cx="100" cy="100" r="50" fill="white"/>
+            <text x="100" y="100" text-anchor="middle" dy="0.3em" font-size="24" font-weight="bold" fill="#2c1810">投資</text>
+            <text x="100" y="125" text-anchor="middle" dy="0.3em" font-size="14" fill="#8d6e63">組合結構</text>
+          </svg>
+        </div>
+
+        <div class="pie-legend">
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #a1887f;"></div>
+            <div class="legend-text">半導體 / AI 核心</div>
+            <div class="legend-percent">34%</div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #c9a876;"></div>
+            <div class="legend-text">大型科技平台</div>
+            <div class="legend-percent">24%</div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #d4a574;"></div>
+            <div class="legend-text">航太 / 衛星</div>
+            <div class="legend-percent">18%</div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #e8b4a8;"></div>
+            <div class="legend-text">設備 / 光通訊</div>
+            <div class="legend-percent">14%</div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #f5f1e8; border: 1px solid #d7ccc8;"></div>
+            <div class="legend-text">現金 / 其他</div>
+            <div class="legend-percent">10%</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px; padding: 16px; background: linear-gradient(to right, #faf8f3, white); border-radius: 4px; border-left: 4px solid #d4a574;">
+        <div style="font-size: 0.9rem; color: #8d6e63; font-weight: 600; margin-bottom: 8px;">圓餅圖說明</div>
+        <div style="font-size: 0.9rem; color: #6d4c41; line-height: 1.6;">
+          這張圓餅圖用來表達目前 ARK 晨報主線下的理想觀察結構，重點不是精準報表，而是提醒資金仍集中在 AI / 半導體，不宜再失衡到單一題材。
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Summary -->
+    <div class="content-section">
+      <div class="section-title">重點摘要</div>
+      <ul class="content-list">
+        <li class="content-item">
+          <strong>市場結構：</strong> 美股結構維持 Nasdaq / 半導體偏強，道瓊相對弱，說明資金還是集中在 AI、半導體與大型科技權值。
+        </li>
+        <li class="content-item">
+          <strong>風控訊號：</strong> 風控數值 63.6%，代表系統沒有切到防守模式，主邏輯仍是可布局，但布局節奏要比 4 月初更保守一點。
+        </li>
+        <li class="content-item">
+          <strong>需求端壓力：</strong> 儲蓄率偏低、消費信心承壓，表示需求端雖還在，但後面若總經數據轉弱，市場對高估值主線的容忍度可能下降。
+        </li>
+        <li class="content-item">
+          <strong>政策與風險：</strong> 依照 ARK 補充判讀，政治或法律 headline 不等於風險解除，後續仍要交叉看油價、波動、美元與市場承接。
+        </li>
+      </ul>
+    </div>
+
+    <!-- Risk Analysis -->
+    <div class="risk-section">
+      <div class="section-title">今日風險</div>
+      <div class="risk-item">
+        <strong>第一個風險：位階高</strong><br>
+        若龍頭轉弱，指數雖未必大跌，但高檔追價部位容易先受傷。
+      </div>
+      <div class="risk-item">
+        <strong>第二個風險：資金集中</strong><br>
+        市場過度集中在少數科技權值，若資金輪動失敗，短線波動會變快。
+      </div>
+      <div class="risk-item">
+        <strong>第三個風險：估值壓縮</strong><br>
+        消費壓力與通膨敘事若重新升溫，會先壓縮成長股評價，而不是先反映在傳統股。
+      </div>
+    </div>
+
+    <!-- Operation Advice -->
+    <div class="operation-section">
+      <div class="section-title">操作建議</div>
+      <div class="advice-item">
+        <strong>主線續抱策略：</strong> 主線續抱，但不在情緒最熱的位置追價，優先等回檔或等確認量價承接後再補。
+      </div>
+      <div class="advice-item">
+        <strong>現有部位管理：</strong> 若手上已有 AI、半導體、設備鏈核心部位，今天偏向續抱觀察，不急著做大幅修剪。
+      </div>
+      <div class="advice-item">
+        <strong>新增部位選擇：</strong> 若想新增部位，優先看同時具備價值區與主線支撐的標的，而不是只看漲得最兇的熱股。
+      </div>
+      <div class="advice-item">
+        <strong>風險調整觸發：</strong> 若後續看到油價、VIX、美元同步升高，而科技權值轉弱，才考慮把節奏往保守調整。
+      </div>
+    </div>
+
+    <!-- Extension Module -->
+    <div class="extension-section">
+      <div class="section-title">延伸模組</div>
+      
+      <div class="extension-subsection">
+        <div class="extension-title">升溫區觀察</div>
+        <div class="extension-content">
+          GOOG、AMD、CSCO
+        </div>
+      </div>
+
+      <div class="extension-subsection">
+        <div class="extension-title">價值區觀察</div>
+        <div class="extension-content">
+          FLY、SATL、AMAT、NVDA、GEV、AVGO、LITE、TSM、MU
+        </div>
+      </div>
+
+      <div class="extension-subsection">
+        <div class="extension-title">市場閱讀方式</div>
+        <div class="extension-content">
+          AI 主線沒壞，但市場已從低位修復進入高位驗證，後面更重視效率與承接，不是單純看漲跌。
+        </div>
+      </div>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="conclusion-section">
+      <div class="conclusion-label">晨報結論</div>
+      <div class="conclusion-text">
+        今天的核心結論：主線還在，風控也還支持續抱與分批布局，但市場位階已高，今天最重要的是守節奏，不是拼速度。可以偏多看待，但不能用 4 月初那種低位心態去追 5 月的高位盤。
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div>ARK 總經晨報 | 2026-05-03 | 公開 HTML 版</div>
+      <div style="margin-top: 8px; opacity: 0.7;">內容結論維持 ARK V1 邏輯，不改判讀主軸</div>
+    </div>
+  </div>
+</body>
+</html>
