@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ARK總經晨報 2026-05-06</title>
+<style>
+  :root {
+    --bg: #f6efe7;
+    --paper: rgba(255, 250, 244, 0.78);
+    --panel: rgba(255,255,255,0.26);
+    --panel-border: rgba(194, 166, 137, 0.42);
+    --ink: #4c311f;
+    --muted: #7b5a43;
+    --accent: #c9ad8a;
+    --accent-deep: #9f7a55;
+    --accent-soft: #efe3d3;
+    --coffee: #b88b63;
+    --coffee-deep: #8f6747;
+    --risk: #d18f3f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(180deg, #f7f0e8 0%, #ebddcc 100%);
+    color: var(--ink);
+  }
+  .page { width: 1600px; margin: 0 auto; padding: 30px; }
+  .sheet {
+    position: relative; overflow: hidden; border-radius: 34px;
+    background: linear-gradient(180deg, rgba(255,249,242,.96) 0%, rgba(247,237,225,.96) 100%);
+    box-shadow: 0 18px 46px rgba(91,58,35,.12); border: 1px solid rgba(198,173,145,.45); padding: 34px;
+  }
+  .hero-photo, .mid-photo { position: absolute; inset: 0; pointer-events: none; opacity: 1; }
+  .hero-photo::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(rgba(255,250,244,.78), rgba(255,250,244,.80)), url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1800&q=80") center center / cover no-repeat;
+  }
+  .mid-photo::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(rgba(255,250,244,.78), rgba(255,250,244,.80)), url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1800&q=80") center center / cover no-repeat;
+  }
+  .content { position: relative; z-index: 1; }
+  .topbar { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:18px; }
+  .title { font-size:50px; font-weight:900; letter-spacing:1px; }
+  .subtitle { color: var(--muted); font-size: 22px; margin-top: 10px; }
+  .stamp { padding:12px 16px; border-radius:999px; background:rgba(255,255,255,.42); border:1px solid rgba(194,166,137,.38); font-size:15px; color:var(--muted); white-space:nowrap; }
+  .headline {
+    margin-top:14px; padding:22px 26px; border-radius:24px; background:rgba(255,255,255,.34);
+    border:1px solid rgba(194,166,137,.40); backdrop-filter:blur(3px); font-size:32px; line-height:1.5; font-weight:900; color:#4b2d1a;
+  }
+  .metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:22px; }
+  .metric { background:rgba(255,255,255,.20); border:1px solid rgba(194,166,137,.34); border-radius:22px; padding:18px; backdrop-filter:blur(2px); min-height:152px; }
+  .metric .k { color: var(--muted); font-size: 18px; font-weight: 800; }
+  .metric .v { margin-top:12px; font-size:34px; font-weight:900; color:#472918; }
+  .metric .s { margin-top:10px; font-size:19px; line-height:1.5; font-weight:700; color:#4f3728; }
+  .section-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:22px; margin-top:24px; }
+  .card { background:rgba(255,255,255,.18); border:1px solid rgba(194,166,137,.36); border-radius:24px; padding:22px; backdrop-filter:blur(2px); }
+  .card h3 { margin:0 0 14px; font-size:28px; color:#5e3822; }
+  .card ul { margin:0; padding-left:24px; }
+  .card li, .card p { font-size:21px; line-height:1.6; color:#3f2a1c; font-weight:700; margin:8px 0; }
+  .macro-wrap { margin-top:28px; border-radius:28px; background:linear-gradient(180deg, rgba(245,238,228,.86) 0%, rgba(236,225,209,.88) 100%); border:1px solid rgba(159,122,85,.24); padding:24px; }
+  .macro-title { font-size:30px; font-weight:900; color:#6c4c34; margin-bottom:14px; letter-spacing:.5px; }
+  .macro-layout { display:grid; grid-template-columns:.72fr 1.48fr; gap:20px; align-items:start; }
+  .map-box { position:relative; min-height:560px; border-radius:26px; overflow:hidden; background:rgba(255,255,255,.30); border:1px solid rgba(159,122,85,.22); padding:18px; }
+  .map-bg { position:absolute; inset:18px; background:url("https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg") center center / contain no-repeat; opacity:.20; filter:sepia(1) hue-rotate(330deg) saturate(.7) brightness(.9); }
+  .risk-circle {
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:210px; height:210px; border-radius:50%;
+    border:12px solid var(--accent-deep); background:rgba(255,255,255,.62); display:flex; align-items:center; justify-content:center; flex-direction:column;
+    color:#6c4c34; box-shadow:0 10px 24px rgba(159,122,85,.14);
+  }
+  .risk-circle .num { font-size:56px; font-weight:900; line-height:1; }
+  .risk-circle .lab { font-size:16px; margin-top:8px; font-weight:800; letter-spacing:.5px; }
+  .macro-list { display:grid; gap:14px; }
+  .macro-item { display:grid; grid-template-columns:62px 1fr; gap:12px; align-items:start; padding:14px 14px; border-radius:18px; background:rgba(255,255,255,.34); border:1px solid rgba(159,122,85,.22); }
+  .macro-item .idx { font-size:44px; font-weight:900; color:var(--accent-deep); line-height:1; }
+  .macro-item .txt b { display:block; font-size:18px; color:#7a573a; margin-bottom:6px; }
+  .macro-item .txt span { display:block; font-size:15px; line-height:1.55; color:#6c5646; font-weight:700; }
+  .lower { margin-top:26px; display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .portfolio { display:grid; grid-template-columns:330px 1fr; gap:22px; align-items:center; }
+  .pie { width:290px; height:290px; border-radius:50%; background:conic-gradient(#9e724a 0 36%, #d1a277 36% 58%, #7aa1a6 58% 74%, #e0c09c 74% 88%, #beb3a6 88% 100%); border:14px solid rgba(255,255,255,.6); box-shadow:inset 0 0 0 1px rgba(194,166,137,.3); margin:0 auto; }
+  .legend-row { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 0; border-bottom:1px dashed rgba(137,109,84,.32); font-size:20px; color:#3f2a1c; font-weight:800; }
+  .left { display:flex; align-items:center; gap:10px; }
+  .dot { width:14px; height:14px; border-radius:50%; display:inline-block; }
+  .footer-note { margin-top:18px; color:var(--muted); font-size:16px; text-align:right; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="sheet">
+      <div class="hero-photo"></div>
+      <div class="content">
+        <div class="topbar">
+          <div>
+            <div class="title">ARK總經晨報-2026-05-06</div>
+            <div class="subtitle">早晨咖啡廳設計版｜世界地圖總經模組｜附可見照片插圖｜內容結論維持 ARK V1 邏輯</div>
+          </div>
+          <div class="stamp">Morning Macro Menu · Wednesday Edition</div>
+        </div>
+
+        <div class="headline">昨晚美股由半導體與科技硬體重新領漲，費半大漲 4.23%，AMD 財報與資金回流共同驗證 AI 主線仍強；但長利率、能源成本與 LEI 轉弱提醒，這不是全面景氣牛市，而是 AI 主導的高位驗證盤。</div>
+
+        <div class="metrics">
+          <div class="metric">
+            <div class="k">一句話主線</div>
+            <div class="v">AI 主線再確認</div>
+            <div class="s">半導體、科技硬體與資料中心基建重新成為資金主戰場。</div>
+          </div>
+          <div class="metric">
+            <div class="k">系統性風險</div>
+            <div class="v" style="color: var(--risk);">中</div>
+            <div class="s">不是恐慌盤，但也不是可以閉眼追價的舒服區。</div>
+          </div>
+          <div class="metric">
+            <div class="k">今日風控</div>
+            <div class="v">60.6%</div>
+            <div class="s">仍在可布局區，但比前一天更重視效率與節奏。</div>
+          </div>
+          <div class="metric">
+            <div class="k">操作態度</div>
+            <div class="v">續抱主線，不追情緒</div>
+            <div class="s">偏多看待，但用高成長進入驗證期的框架操作。</div>
+          </div>
+        </div>
+
+        <div class="section-grid">
+          <div class="card">
+            <h3>重點摘要</h3>
+            <ul>
+              <li>主線還在：費半大漲 4.23%，半導體與科技硬體重新領漲，美股不是單純反彈，而是資金重新集中回 AI 主線。</li>
+              <li>AMD 財報驗證：Q1 營收年增 38%、資料中心年增 57%，代表這波不是只靠情緒，而是 AI 基建需求仍在上修。</li>
+              <li>主線已擴散：從 GPU 延伸到 CPU、封裝、記憶體、電力、互連與資料中心整體升級。</li>
+              <li>台股白天先進入高檔整理，風控降到 60.6%，所以今天重點是守節奏，不是追最快。</li>
+              <li>市場該讀成主線再確認，但不能誤讀成全面無風險續攻。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>今日風險</h3>
+            <ul>
+              <li>長端利率仍偏高，英國 30Y 創高提醒估值不是沒有天敵。</li>
+              <li>LEI 續弱，總經前瞻動能沒有同步轉強，股市與實體經濟仍存在剪刀差。</li>
+              <li>AI 建設推升能源與碳成本，後續可能重新帶回通膨與電力壓力。</li>
+              <li>市場若只靠少數科技權值撐盤，高檔追價部位會先承受波動。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="macro-wrap content">
+        <div class="macro-title">GLOBAL MACRO DASHBOARD</div>
+        <div class="macro-layout">
+          <div class="macro-list">
+            <div class="macro-item"><div class="idx">01</div><div class="txt"><b>費半 +4.23% 強於大盤</b><span>這波最重要的訊號不是三大指數上漲，而是半導體重新成為資金主攻核心。</span></div></div>
+            <div class="macro-item"><div class="idx">02</div><div class="txt"><b>風控 60.6%</b><span>系統仍在可布局區，但比前一天更重視效率與驗證，不適合用低位修復盤心態追價。</span></div></div>
+            <div class="macro-item"><div class="idx">03</div><div class="txt"><b>AMD + Palantir 一起成立</b><span>AI 不只在硬體端續強，連企業軟體與政府應用也開始把需求轉成營收與利潤。</span></div></div>
+            <div class="macro-item"><div class="idx">04</div><div class="txt"><b>風險沒有解除</b><span>長利率、黃金、LEI 與能源成本都提醒，這是一場主線很強、底層仍有壓力的高位驗證盤。</span></div></div>
+          </div>
+
+          <div class="map-box">
+            <div class="map-bg"></div>
+            <div class="risk-circle">
+              <div class="num">60.6%</div>
+              <div class="lab">風控數據</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mid-photo"></div>
+      <div class="content lower">
+        <div class="card">
+          <h3>投資組合圓餅圖（示意結構）</h3>
+          <div class="portfolio">
+            <div class="pie"></div>
+            <div>
+              <div class="legend-row"><span class="left"><span class="dot" style="background:#9e724a"></span>半導體 / AI 核心</span><strong>36%</strong></div>
+              <div class="legend-row"><span class="left"><span class="dot" style="background:#d1a277"></span>大型科技平台</span><strong>22%</strong></div>
+              <div class="legend-row"><span class="left"><span class="dot" style="background:#7aa1a6"></span>資料中心基建 / 電力</span><strong>16%</strong></div>
+              <div class="legend-row"><span class="left"><span class="dot" style="background:#e0c09c"></span>衛星 / 光通訊 / 設備</span><strong>14%</strong></div>
+              <div class="legend-row"><span class="left"><span class="dot" style="background:#beb3a6"></span>現金 / 風險緩衝</span><strong>12%</strong></div>
+              <p style="margin-top:16px;">這張圓餅圖表達 5/6 晨報下的理想觀察結構。重點不是精準報表，而是提醒主線雖強，仍要保留風險緩衝，不宜再失衡到單一題材。</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid; gap:22px;">
+          <div class="card">
+            <h3>操作建議</h3>
+            <ul>
+              <li>主線續抱，但不在情緒最熱的位置追價，優先等回檔或等確認量價承接後再補。</li>
+              <li>手上若已有 AI、半導體、設備鏈核心部位，今天偏向續抱觀察，不急著大幅修剪。</li>
+              <li>若想新增部位，優先看同時具備價值區與主線支撐的標的，而不是只看漲得最兇的熱股。</li>
+              <li>若後續看到長利率、油價、VIX 同步升高，而科技權值轉弱，才考慮把節奏往保守調整。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>延伸模組與晨報結論</h3>
+            <ul>
+              <li>Apple 備援供應鏈不應直接讀成 TSMC 利空，更像 AI 擴產正壓縮高階晶圓供給彈性。</li>
+              <li>Hassabis 的觀點顯示 AGI 還遠未完成，反而代表算力、記憶體、互連與工具鏈需求還有長路要走。</li>
+              <li>央行持續買黃金、離岸美元存款創高，說明官方在分散風險，但金融系統底層仍離不開美元。</li>
+              <li><b>今天的核心結論：</b>AI 主線再次用財報、資金流與盤面證明自己仍是最強敘事，但這條主線越強，也越把利率、能源、供應鏈與估值壓力一起往前推。可以偏多看待，但不能用低位盤心態追高位科技盤。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-note content">ARK Morning Report · 2026/05/06 · Coffeehouse World Map Edition</div>
+    </div>
+  </div>
+</body>
+</html>
