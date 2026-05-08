@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ARK總經晨報 2026-05-08</title>
+<style>
+  :root {
+    --bg: #f6efe7; --ink: #4c311f; --muted: #7b5a43; --accent-deep: #9f7a55; --risk: #d18f3f;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif; background:linear-gradient(180deg,#f7f0e8 0%,#ebddcc 100%); color:var(--ink); }
+  .page { width:1600px; margin:0 auto; padding:30px; }
+  .sheet { position:relative; overflow:hidden; border-radius:34px; background:linear-gradient(180deg,rgba(255,249,242,.96) 0%,rgba(247,237,225,.96) 100%); box-shadow:0 18px 46px rgba(91,58,35,.12); border:1px solid rgba(198,173,145,.45); padding:34px; }
+  .hero-photo,.mid-photo{position:absolute; inset:0; pointer-events:none; opacity:1;}
+  .hero-photo::before{content:""; position:absolute; inset:0; background:linear-gradient(rgba(255,250,244,.78), rgba(255,250,244,.80)), url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;}
+  .mid-photo::before{content:""; position:absolute; inset:0; background:linear-gradient(rgba(255,250,244,.78), rgba(255,250,244,.80)), url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;}
+  .content{position:relative; z-index:1;}
+  .topbar{display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:18px;}
+  .title{font-size:50px; font-weight:900; letter-spacing:1px;}
+  .subtitle{color:var(--muted); font-size:22px; margin-top:10px;}
+  .stamp{padding:12px 16px; border-radius:999px; background:rgba(255,255,255,.42); border:1px solid rgba(194,166,137,.38); font-size:15px; color:var(--muted); white-space:nowrap;}
+  .headline{margin-top:14px; padding:22px 26px; border-radius:24px; background:rgba(255,255,255,.34); border:1px solid rgba(194,166,137,.40); font-size:32px; line-height:1.5; font-weight:900; color:#4b2d1a;}
+  .metrics{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:22px;}
+  .metric{background:rgba(255,255,255,.20); border:1px solid rgba(194,166,137,.34); border-radius:22px; padding:18px; min-height:152px;}
+  .metric .k{color:var(--muted); font-size:18px; font-weight:800;}.metric .v{margin-top:12px; font-size:34px; font-weight:900; color:#472918;}.metric .s{margin-top:10px; font-size:19px; line-height:1.5; font-weight:700; color:#4f3728;}
+  .section-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:22px; margin-top:24px;}
+  .card{background:rgba(255,255,255,.18); border:1px solid rgba(194,166,137,.36); border-radius:24px; padding:22px;}
+  .card h3{margin:0 0 14px; font-size:28px; color:#5e3822;}.card ul{margin:0; padding-left:24px;}.card li,.card p{font-size:21px; line-height:1.6; color:#3f2a1c; font-weight:700; margin:8px 0;}
+  .macro-wrap{margin-top:28px; border-radius:28px; background:linear-gradient(180deg, rgba(245,238,228,.86) 0%, rgba(236,225,209,.88) 100%); border:1px solid rgba(159,122,85,.24); padding:24px;}
+  .macro-title{font-size:30px; font-weight:900; color:#6c4c34; margin-bottom:14px;}
+  .macro-layout{display:grid; grid-template-columns:.72fr 1.48fr; gap:20px; align-items:start;}
+  .map-box{position:relative; min-height:560px; border-radius:26px; overflow:hidden; background:rgba(255,255,255,.30); border:1px solid rgba(159,122,85,.22); padding:18px;}
+  .map-bg{position:absolute; inset:18px; background:url("https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg") center/contain no-repeat; opacity:.20; filter:sepia(1) hue-rotate(330deg) saturate(.7) brightness(.9);}
+  .risk-circle{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:210px; height:210px; border-radius:50%; border:12px solid var(--accent-deep); background:rgba(255,255,255,.62); display:flex; align-items:center; justify-content:center; flex-direction:column; color:#6c4c34;}
+  .risk-circle .num{font-size:56px; font-weight:900; line-height:1;} .risk-circle .lab{font-size:16px; margin-top:8px; font-weight:800;}
+  .macro-list{display:grid; gap:14px;}.macro-item{display:grid; grid-template-columns:62px 1fr; gap:12px; align-items:start; padding:14px; border-radius:18px; background:rgba(255,255,255,.34); border:1px solid rgba(159,122,85,.22);} .macro-item .idx{font-size:44px; font-weight:900; color:var(--accent-deep); line-height:1;} .macro-item .txt b{display:block; font-size:18px; color:#7a573a; margin-bottom:6px;} .macro-item .txt span{display:block; font-size:15px; line-height:1.55; color:#6c5646; font-weight:700;}
+  .lower{margin-top:26px; display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  .footer-note{margin-top:18px; color:var(--muted); font-size:16px; text-align:right;}
+</style>
+</head>
+<body>
+<div class="page"><div class="sheet"><div class="hero-photo"></div><div class="content">
+<div class="topbar"><div><div class="title">ARK總經晨報-2026-05-08</div><div class="subtitle">早晨咖啡廳設計版｜世界地圖總經模組｜附可見照片插圖｜內容結論維持 ARK V1 邏輯</div></div><div class="stamp">Morning Macro Menu · Friday Edition</div></div>
+<div class="headline">昨晚美股轉入高位分化，費半重挫 2.72%，但半導體與軟體基建資金沒有全面撤退；另一邊，馬士基預告運費上升與中東風險擴大成本壓力，說明今天市場不是主線熄火，而是進入「AI 強、消費壓」的分化結構。</div>
+<div class="metrics">
+<div class="metric"><div class="k">一句話主線</div><div class="v">AI 主線未熄火</div><div class="s">晶片與設備鏈進入分化整理，但算力、資料中心與 AI 基建利多仍在延續。</div></div>
+<div class="metric"><div class="k">系統性風險</div><div class="v" style="color:var(--risk);">中</div><div class="s">不是全面風險-off，但航運、戰爭與成本傳導壓力正在往消費端累積。</div></div>
+<div class="metric"><div class="k">今日風控</div><div class="v">62.1%</div><div class="s">仍在可布局區，但今天要更重視支撐、分化與短線波動放大。</div></div>
+<div class="metric"><div class="k">操作態度</div><div class="v">主線續抱，別硬追</div><div class="s">AI 還是主軸，但當沖偏高、費半轉弱，今天更像支撐測試盤。</div></div>
+</div>
+<div class="section-grid">
+<div class="card"><h3>重點摘要</h3><ul>
+<li>美股四大指數全數收黑，費半 <b>-2.72%</b>，顯示昨晚不是全面續攻，而是高位分化。</li>
+<li>雖然 AMD、MU、AVGO、AMAT、TSM ADR 承壓，但半導體仍有 <b>+26.86 億</b> 淨流入，軟體基礎設施也有 <b>+18.17 億</b>，代表 AI 主線沒有全面撤退。</li>
+<li>Nvidia 與 IREN 的 5GW AI 基建合作，再次驗證算力與電力需求仍在加速擴張。</li>
+<li>馬士基預告航運運費將上漲，顯示伊朗戰爭、繞道非洲、保險與容量緊縮正在往消費端傳導成本壓力。</li>
+<li>台股昨天單日大漲近 800 點、當沖占比高達 38%，今天若開高，要提防開高走低與支撐測試。</li>
+</ul></div>
+<div class="card"><h3>今日風險</h3><ul>
+<li>當沖占比高，代表短線籌碼偏熱，盤勢一旦震盪，波動會被放大。</li>
+<li>費半與半導體設備鏈轉弱，說明 AI 內部已開始汰弱留強，不再是全面共漲。</li>
+<li>航運成本與戰爭風險若繼續升高，可能重新推升通膨與消費壓力。</li>
+<li>金價續強、美元回升，代表市場雖未恐慌，但避險意識沒有完全退場。</li>
+</ul></div>
+</div></div>
+<div class="macro-wrap content"><div class="macro-title">GLOBAL MACRO DASHBOARD</div><div class="macro-layout"><div class="macro-list">
+<div class="macro-item"><div class="idx">01</div><div class="txt"><b>費半 -2.72%，但資金未全面撤退</b><span>晶片與設備鏈回檔，代表主線轉入高位分化，不是主線直接熄火。</span></div></div>
+<div class="macro-item"><div class="idx">02</div><div class="txt"><b>風控 62.1%</b><span>系統仍在可布局區，但今天不是舒服追價盤，更像支撐測試與節奏盤。</span></div></div>
+<div class="macro-item"><div class="idx">03</div><div class="txt"><b>AI 基建利多還在延續</b><span>Nvidia × IREN 5GW 合作與前兩天的算力 / 光學擴建消息，說明基建主線還沒停。</span></div></div>
+<div class="macro-item"><div class="idx">04</div><div class="txt"><b>AI 強，消費壓</b><span>馬士基運價上調預告與中東風險，提醒消費端與成本端壓力正在累積。</span></div></div>
+</div><div class="map-box"><div class="map-bg"></div><div class="risk-circle"><div class="num">62.1%</div><div class="lab">風控數據</div></div></div></div></div>
+<div class="mid-photo"></div><div class="content lower">
+<div class="card"><h3>今日盤面與台股觀察</h3><ul>
+<li>台股昨天大漲近 800 點，單週漲幅已非常大，今天關鍵不是再追，而是觀察支撐是否守得住。</li>
+<li>主軸仍是 AI 供應鏈，但半導體昨晚先壓回，今天台股更容易出現高位震盪。</li>
+<li>金融股若有落後補漲，會是今天台股內部輪動的觀察重點之一。</li>
+<li>台指近月夜盤雖高，但電子盤轉弱，說明今天盤面開出後更要看電子承接，而不是只看指數表面。</li>
+</ul></div>
+<div class="card"><h3>延伸模組與晨報結論</h3><ul>
+<li>Redwire 的國防科技營收暴增，顯示太空 / defense 題材正從純太空故事往國防科技重定價，但仍屬高波動高稀釋段，較適合延伸觀察，不是今天主卡核心。</li>
+<li>巴菲特退休後波克夏相對標普明顯落後，說明目前市場風格仍偏成長與 AI，而非傳統價值防禦。</li>
+<li><b>今天的核心結論：</b>AI 主線仍在，但市場已從全面樂觀切回高效率資金集中盤；若台股今天開高，要優先看支撐與承接，不適合把昨天的強勢直接當成今天還會無條件複製。</li>
+</ul></div>
+</div><div class="footer-note content">ARK Morning Report · 2026/05/08 · Coffeehouse World Map Edition</div></div></div>
+</body></html>
